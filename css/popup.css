@@ -1,0 +1,89 @@
+.navbar {
+  overflow: hidden;
+  justify-content: flex-end;
+  display: flex;
+  text-align: center;
+  padding: 10px;
+  background-color:transparent;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+}
+.navbar .menu ion-icon{
+  font-size: 30px;
+}
+.popup {
+  display: none;
+  position: fixed;
+  padding: 10px;
+  width: 280px;
+  left: 50%;
+  margin-left: -150px;
+  height: 180px;
+  top: 20%;
+  margin-top: -100px;
+  color: #f7eeee;
+  background: #000000;
+  border: 3px solid #ffffff;
+  z-index: 999;
+  border-radius: 10px;
+}
+
+#popup:after {
+  position: fixed;
+  content: "";
+  top: 0;
+  border-radius: 10px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: -2;
+}
+a{
+  text-decoration: none;
+  color: white;
+}
+button{
+  text-align: center;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;  padding: 5px 10px 5px;
+  border-radius: 10px;
+  color: #000000;
+  border: 2px solid transparent;
+}
+button:hover{
+  text-align: center;
+  padding: 5px 10px 5px;
+  border-radius: 10px;
+  color: #000000;
+  border: 2px solid cyan;
+}
+.close{
+  text-align: center;
+  margin-top: 5px;
+  background: rgb(99, 99, 99);
+  padding: 5px 5px 5px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+}
+.close:hover{
+  border: 2px solid rgb(255, 255, 255);
+}
+#popup:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #000000;
+  z-index: -1;
+  border-radius: 10px;
+}
+
+/* Styling buttons & webpage */
+
+p {
+	margin: 1em 0;
+  font-size: 16px;
+}
