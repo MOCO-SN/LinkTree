@@ -3,94 +3,336 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="icon" href="/images/sachinpro.png">
+  <link rel="icon" href="https://www.mocosn.in/favicon.png">
   <title>Sachin's || Linktree</title>
-  <meta name="theme-color" content="#06c1db">
+  <meta name="theme-color" content="#0f0c29">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: url("https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1920&q=80") no-repeat center center/cover;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       color: #fff;
       padding: 20px;
+      overflow-x: hidden;
+    }
+
+    /* Animated Background Orbs */
+    .bg-orbs {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.6;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .orb-1 {
+      width: 400px;
+      height: 400px;
+      background: #06c1db;
+      top: -100px;
+      left: -100px;
+      animation-delay: 0s;
+    }
+
+    .orb-2 {
+      width: 350px;
+      height: 350px;
+      background: #8a2be2;
+      bottom: -80px;
+      right: -80px;
+      animation-delay: -2s;
+    }
+
+    .orb-3 {
+      width: 300px;
+      height: 300px;
+      background: #ff6b6b;
+      top: 50%;
+      left: 50%;
+      animation-delay: -4s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      33% {
+        transform: translate(30px, -30px) scale(1.1);
+      }
+      66% {
+        transform: translate(-20px, 20px) scale(0.9);
+      }
     }
 
     .container {
+      position: relative;
+      z-index: 1;
       width: 100%;
-      max-width: 420px;
+      max-width: 700px;
       text-align: center;
-      padding: 40px 25px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 50px 30px;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3),
+                  inset 0 0 60px rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .avatar-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 150px;
+      height: 150px;
+      background: linear-gradient(135deg, #06c1db, #8a2be2, #ff6b6b);
+      border-radius: 50%;
+      filter: blur(20px);
+      opacity: 0.6;
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.6;
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.15);
+        opacity: 0.8;
+      }
     }
 
     .avatar {
       width: 130px;
       height: 130px;
       border-radius: 50%;
-      border: 3px solid rgba(255, 255, 255, 0.6);
-      margin-bottom: 15px;
-      transition: transform 0.3s ease;
-    }
-    .avatar:hover {
-      transform: scale(1.05);
+      border: 3px solid rgba(255, 255, 255, 0.9);
+      position: relative;
+      z-index: 1;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
-    h1 {
-      font-size: 26px;
-      margin: 12px 0;
-      background: linear-gradient(90deg,#06c1db,#8a2be2);
+    .avatar:hover {
+      transform: scale(1.08);
+      box-shadow: 0 15px 40px rgba(6, 193, 219, 0.4);
+    }
+
+    .username {
+      position: relative;
+      display: inline-block;
+    }
+
+    .username h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 15px 0 5px;
+      background: linear-gradient(90deg, #06c1db, #8a2be2, #ff6b6b);
+      background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      animation: gradient-shift 4s ease infinite;
+    }
+
+    @keyframes gradient-shift {
+      0%, 100% { background-position: 0% center; }
+      50% { background-position: 200% center; }
+    }
+
+    .username a:hover h1 {
+      animation: gradient-shift 1s ease infinite;
     }
 
     .bio {
       font-size: 15px;
-      margin-bottom: 28px;
-      color: #e0e0e0;
+      margin-bottom: 35px;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 300;
+      letter-spacing: 0.5px;
     }
 
-    .link, .share-btn {
-      display: block;
-      background: rgba(255, 255, 255, 0.12);
+    /* Grid Layout */
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .link {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.08);
       color: #fff;
       text-decoration: none;
-      padding: 14px;
-      margin: 12px 0;
-      border-radius: 12px;
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(255,255,255,0.3);
+      padding: 25px 15px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       transition: all 0.3s ease;
       font-weight: 500;
+      font-size: 14px;
+      overflow: hidden;
+    }
+
+    .link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .link:hover::before {
+      left: 100%;
+    }
+
+    .link:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-5px) scale(1.02);
+      border-color: rgba(6, 193, 219, 0.5);
+      box-shadow: 0 10px 30px rgba(6, 193, 219, 0.25);
+    }
+
+    .link-icon {
+      font-size: 32px;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .link:hover .link-icon {
+      background: linear-gradient(135deg, #06c1db, #8a2be2);
+      transform: scale(1.1);
+    }
+
+    .link-text {
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Featured Link - spans 2 columns */
+    .link.featured {
+      grid-column: span 2;
+      flex-direction: row;
+      justify-content: flex-start;
+      padding: 20px 25px;
+    }
+
+    .link.featured .link-icon {
+      width: 50px;
+      height: 50px;
+      font-size: 26px;
+      border-radius: 14px;
+    }
+
+    .link.featured .link-text {
+      text-align: left;
       font-size: 15px;
     }
 
-    .link:hover, .share-btn:hover {
-      background: rgba(255, 255, 255, 0.3);
-      color: #000;
-      box-shadow: 0 4px 15px rgba(255,255,255,0.3);
-      transform: translateY(-2px);
+    .share-btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #06c1db, #8a2be2);
+      color: #fff;
+      border: none;
+      padding: 16px 25px;
+      border-radius: 16px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 15px;
+      font-family: 'Poppins', sans-serif;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(6, 193, 219, 0.3);
+      margin-top: 10px;
+    }
+
+    .share-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(6, 193, 219, 0.4);
+    }
+
+    .share-btn:active {
+      transform: translateY(-1px);
+    }
+
+    .share-icon {
+      font-size: 18px;
+    }
+
+    .message {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #90ee90;
+      display: none;
+      animation: fade-in 0.3s ease;
+    }
+
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .footer {
       margin-top: 40px;
       font-size: 12px;
-      color: #ddd;
+      color: rgba(255, 255, 255, 0.5);
     }
 
-    .message {
-      margin-top: 10px;
-      font-size: 13px;
-      color: #90ee90;
-      display: none;
+    .footer span {
+      background: linear-gradient(90deg, #06c1db, #8a2be2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 500;
     }
 
     a {
@@ -101,86 +343,192 @@
     /* Responsive Design */
     @media (max-width: 768px) {
       .container {
-        max-width: 90%;
-        padding: 30px 20px;
+        max-width: 95%;
+        padding: 40px 20px;
+      }
+      .links-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
       }
       .avatar {
         width: 110px;
         height: 110px;
       }
-      h1 {
-        font-size: 22px;
+      .username h1 {
+        font-size: 24px;
       }
-      .link, .share-btn {
+      .bio {
         font-size: 14px;
-        padding: 12px;
       }
+      .link {
+        padding: 20px 12px;
+        font-size: 13px;
+      }
+      .link-icon {
+        font-size: 28px;
+        width: 55px;
+        height: 55px;
+      }
+      .orb-1 { width: 300px; height: 300px; }
+      .orb-2 { width: 250px; height: 250px; }
+      .orb-3 { width: 200px; height: 200px; }
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 520px) {
       body {
         padding: 15px;
       }
       .container {
-        padding: 25px 15px;
-        border-radius: 15px;
+        padding: 30px 15px;
+        border-radius: 25px;
+      }
+      .links-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .link.featured {
+        grid-column: span 2;
+        flex-direction: row;
       }
       .avatar {
-        width: 95px;
-        height: 95px;
+        width: 100px;
+        height: 100px;
       }
-      h1 {
-        font-size: 20px;
+      .avatar-glow {
+        width: 120px;
+        height: 120px;
+      }
+      .username h1 {
+        font-size: 22px;
       }
       .bio {
         font-size: 13px;
       }
-      .link, .share-btn {
-        font-size: 13px;
-        padding: 10px;
-        margin: 10px 0;
+      .link {
+        padding: 18px 10px;
+        border-radius: 16px;
+      }
+      .link-icon {
+        font-size: 26px;
+        width: 50px;
+        height: 50px;
+        border-radius: 14px;
+      }
+      .link-text {
+        font-size: 12px;
+      }
+      .share-btn {
+        padding: 14px 20px;
+        font-size: 14px;
+        border-radius: 14px;
       }
       .footer {
         font-size: 11px;
+      }
+      .orb {
+        filter: blur(60px);
+      }
+    }
+
+    @media (max-width: 380px) {
+      .links-grid {
+        grid-template-columns: 1fr;
+      }
+      .link.featured {
+        grid-column: span 1;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Animated Background -->
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
   <div class="container">
-    <img src="/images/sachinpro.png" alt="Profile Picture" class="avatar" />
-    <a href="https://www.instagram.com/_sachin_2006_01/"><h1>@_sachin_2006_01</h1></a>
+    <div class="avatar-wrapper">
+      <div class="avatar-glow"></div>
+      <img src="https://www.mocosn.in/favicon.png" alt="Profile Picture" class="avatar" />
+    </div>
+    
+    <div class="username">
+      <a href="https://www.instagram.com/_sachin_2006_01/" target="_blank">
+        <h1>@_sachin_2006_01</h1>
+      </a>
+    </div>
     <p class="bio">Developer • Creative • Minimal • Connected</p>
 
-    <a class="link" href="https://sachinpro.surge.sh/" target="_blank">🌐 Portfolio</a>
-    <a class="link" href="https://github.com/MOCO-SN" target="_blank">💻 GitHub</a>
-    <a class="link" href="https://www.linkedin.com/in/sachin-patel-b5106a295/" target="_blank">🔗 LinkedIn</a>
-    <a class="link" href="https://www.facebook.com/sachin148921/" target="_blank">📘 Facebook</a>
-    <a class="link" href="https://www.facebook.com/sachin148921/" target="_blank">🐦 Twitter (X)</a>
-    <a class="link" href="https://www.instagram.com/_sachin_2006_01/" target="_blank">📸 Instagram</a>
-    <a class="link" href="https://sachinsoft.surge.sh/" target="_blank">📱 Applications</a>
-    <a class="link" href="https://sachinsoft.surge.sh/Smart_Cheat_Website" target="_blank">🔥 Free Fire Mods</a>
-    <a class="link" href="mailto:sachinpatel34241@gmail.com">✉️ Email</a>
+    <div class="links-grid">
+      <a class="link featured" href="https://sachinpro.surge.sh/" target="_blank">
+        <span class="link-icon">🌐</span>
+        <span class="link-text">Portfolio</span>
+      </a>
+      <a class="link" href="https://github.com/MOCO-SN" target="_blank">
+        <span class="link-icon">💻</span>
+        <span class="link-text">GitHub</span>
+      </a>
+      <a class="link" href="https://www.linkedin.com/in/sachin-patel-b5106a295/" target="_blank">
+        <span class="link-icon">🔗</span>
+        <span class="link-text">LinkedIn</span>
+      </a>
+      <a class="link" href="https://www.facebook.com/sachin148921/" target="_blank">
+        <span class="link-icon">📘</span>
+        <span class="link-text">Facebook</span>
+      </a>
+      <a class="link" href="https://x.com/SachinPat69151" target="_blank">
+        <span class="link-icon">🐦</span>
+        <span class="link-text">Twitter (X)</span>
+      </a>
+      <a class="link" href="https://www.instagram.com/_sachin_2006_01/" target="_blank">
+        <span class="link-icon">📸</span>
+        <span class="link-text">Instagram</span>
+      </a>
+      <a class="link" href="https://software.mocosn.in/" target="_blank">
+        <span class="link-icon">📱</span>
+        <span class="link-text">Applications</span>
+      </a>
+      <a class="link" href="mailto:sachinpatel34241@gmail.com">
+        <span class="link-icon">✉️</span>
+        <span class="link-text">Email</span>
+      </a>
+    </div>
 
-    <!-- Share Button -->
-    <div class="share-btn" onclick="shareLink()">🔗 Share My Linktree</div>
-    <div class="message" id="copyMessage">Link copied to clipboard!</div>
+    <button class="share-btn" onclick="shareLink()">
+      <span class="share-icon">🔗</span>
+      Share My Linktree
+    </button>
+    <div class="message" id="copyMessage">Link copied to clipboard! ✓</div>
 
     <div class="footer">
-      &copy; 2025 by Sachin Patel {Updated on 30-08-2025.}
+      © 2025 <span>Sachin Patel</span> — Updated on 29-03-2026
     </div>
   </div>
-~`
+
   <script>
     function shareLink() {
-      const shareUrl = "https://snlink.surge.sh";
+      const shareUrl = "https://linktree.mocosn.in";
       navigator.clipboard.writeText(shareUrl).then(() => {
         const msg = document.getElementById('copyMessage');
         msg.style.display = 'block';
         setTimeout(() => {
           msg.style.display = 'none';
-        }, 2000);
-        alert("👍 Copied Successfully!");
+        }, 2500);
+      }).catch(() => {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = shareUrl;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        const msg = document.getElementById('copyMessage');
+        msg.style.display = 'block';
+        setTimeout(() => {
+          msg.style.display = 'none';
+        }, 2500);
       });
     }
   </script>
