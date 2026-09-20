@@ -155,16 +155,16 @@
       text-decoration: none;
       border: 1px solid var(--border);
       border-radius: 42px;
-      background: linear-gradient(110deg, rgba(131, 180, 224, 0.441), rgba(23, 49, 72, 0.48));
-      backdrop-filter: blur(17px);
-      -webkit-backdrop-filter: blur(17px);
+      background: rgba(255, 255, 255, .10);
+      backdrop-filter: blur(14px);
       box-shadow: inset 0 1px rgba(255, 255, 255, .14), 0 12px 35px rgba(0, 0, 0, .18);
       transition: .25s ease
     }
 
     .link:hover {
+      box-shadow: 0px 0px 10px white;
       transform: translateY(-3px) scale(1.01);
-      border-color: rgba(0, 229, 255, .75)
+      border-color: rgba(254, 254, 254, 0.75)
     }
 
     .icon {
@@ -174,7 +174,8 @@
       display: grid;
       place-items: center;
       border-radius: 50%;
-      background: radial-gradient(circle at 35% 30%, #0e9198, #062846);
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.197);
       font-size: 22px
     }
 
@@ -215,8 +216,7 @@
 
     .mountain {
       margin-top: 10px;
-      font-size: 22px;
-      letter-spacing: -6px
+      font-size: 10px;
     }
 
     @media(max-width:520px) {
@@ -257,7 +257,7 @@
     <section class="profile">
       <div class="avatar"><img src="./images/profile.jpg" alt="Sachin Patel"></div>
       <h1>Sachin <span>Patel</span></h1>
-      <div class="role">STUDENT &nbsp;•&nbsp; DEVELOPER &nbsp;•&nbsp; DREAMER</div>
+      <div class="role">STUDENT &nbsp;•&nbsp; DEVELOPER &nbsp;•&nbsp; DREAMER  &nbsp;•&nbsp; LISTNER</div>
       <p class="bio">Building cool things, learning every day,<br>and working towards a better tomorrow.</p>
 
       <nav class="socials" aria-label="Social links">
@@ -282,7 +282,7 @@
       </a>
     </section>
 
-    <footer>Keep Growing<div class="mountain">▲◢</div>
+    <footer>Keep Growing<div class="mountain">Made with ❤️ by mocosn.in</div>
     </footer>
   </main>
 
